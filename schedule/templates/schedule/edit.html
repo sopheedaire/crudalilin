@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F3F1F5; /* Very light violet background */
+            text-align: center;
+        }
+
+        h1 {
+            color: #591B69; /* Muted violet text color */
+        }
+
+        form {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFFFFF; /* White background */
+            border-radius: 10px; /* Slightly rounded corners */
+            box-shadow: 0px 2px 10px rgba(110, 70, 174, 0.2); /* Prominent violet gradient shadow */
+        }
+
+        button[type="submit"] {
+            background-color: #6e46ae; /* Violet button background */
+            color: #FFFFFF; /* White button text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #591B69; /* Darker violet on hover */
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #6e46ae; /* Violet link color */
+            border: 1px solid #6e46ae;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #591B69; /* Darker violet on hover */
+            color: #FFFFFF; /* White text on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Schedule</h1>
+    <form method="POST" class="schedule-form">
+        {% csrf_token %}
+    
+        {% for field in form %}
+            <div class="form-field">
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+        {% endfor %}
+    
+        <button type="submit" class="update-button">Update</button>
+    </form>
+    
+
+    <a href="/show">Cancel</a>
+    <a href="{% url 'show_schedules' %}">View All Schedules</a>
+</body>
+</html>
